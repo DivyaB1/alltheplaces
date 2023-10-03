@@ -1,7 +1,7 @@
 import scrapy
 
 from locations.items import Feature
-
+from locations.categories import Categories, apply_category
 
 class CostaCoffeePLSpider(scrapy.Spider):
     name = "costacoffee_pl"
@@ -46,5 +46,7 @@ class CostaCoffeePLSpider(scrapy.Spider):
                     properties["addr_full"],
                 )
             )
+
+            apply_category(Categories.CAFE, properties)
 
             yield Feature(**properties)
