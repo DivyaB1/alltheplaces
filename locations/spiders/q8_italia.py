@@ -1,6 +1,7 @@
 from scrapy import Spider
 
 from locations.items import Feature
+from locations.categories import Categories, apply_category
 
 # Confusingly, not just IT but most of Europe
 # Also not just Q8Italia
@@ -46,5 +47,7 @@ class Q8ItaliaSpider(Spider):
             # servizi
             # TODO: products
             # prodotti
+
+            apply_category(Categories.FUEL_STATION, item)
 
             yield item
