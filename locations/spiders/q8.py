@@ -2,6 +2,7 @@ import scrapy
 
 from locations.hours import OpeningHours
 from locations.items import Feature
+from locations.categories import Categories, apply_category
 
 
 # AKA Q8 NWE https://www.q8.be/nl/stations
@@ -44,5 +45,7 @@ class Q8Spider(scrapy.Spider):
 
             if brand := self.BRANDS.get(store["Category"]):
                 item.update(brand)
+
+            apply_category(Categories.FUEL_STATION, item)
 
             yield item
