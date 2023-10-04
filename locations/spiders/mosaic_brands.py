@@ -3,6 +3,7 @@ from scrapy.http import JsonRequest
 
 from locations.dict_parser import DictParser
 from locations.hours import OpeningHours
+from locations.categories import Categories, apply_category
 
 
 class MosaicBrandSpider(Spider):
@@ -58,5 +59,6 @@ class MosaicBrandSpider(Spider):
             hours_string = " ".join(filter(None, Selector(text=location["storeHours"]).xpath("//text()").getall()))
             item["opening_hours"] = OpeningHours()
             item["opening_hours"].add_ranges_from_string(hours_string)
+            apply_category(Categories.SHOP_CLOTHES, item)
 
             yield item
