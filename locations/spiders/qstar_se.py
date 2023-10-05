@@ -1,6 +1,7 @@
 import scrapy
 
 from locations.items import Feature
+from locations.categories import Categories, apply_category
 
 
 class QStartSESpider(scrapy.Spider):
@@ -15,7 +16,8 @@ class QStartSESpider(scrapy.Spider):
 
     def parse(self, response, **kwargs):
         for store in response.json():
-            yield Feature(
+
+            item =  Feature(
                 {
                     "ref": store.get("id"),
                     "name": store.get("name"),
@@ -28,4 +30,11 @@ class QStartSESpider(scrapy.Spider):
                     "lat": float(store.get("latitude")),
                     "lon": float(store.get("longitude")),
                 }
+            
             )
+
+            apply_category(Categories.FUEL_STATION, item)
+            yield item
+
+
+            
