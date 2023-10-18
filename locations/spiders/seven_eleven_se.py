@@ -1,10 +1,11 @@
 import scrapy
 
+from locations.categories import Categories
 from locations.hours import DAYS, OpeningHours
 from locations.items import Feature
 
 
-class SevenElevenUSSpider(scrapy.Spider):
+class SevenElevenSESpider(scrapy.Spider):
     name = "seven_eleven_se"
     start_urls = ["https://storage.googleapis.com/public-store-data-prod/stores-seven_eleven.json"]
 
@@ -35,5 +36,6 @@ class SevenElevenUSSpider(scrapy.Spider):
                     "lat": coordinates.get("lat"),
                     "lon": coordinates.get("lng"),
                     "opening_hours": oh,
+                    "extras": Categories.SHOP_CONVENIENCE.value,
                 }
             )

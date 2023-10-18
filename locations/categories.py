@@ -51,6 +51,7 @@ class Categories(Enum):
     SHOP_CHARITY = {"shop": "charity"}
     SHOP_CHEMIST = {"shop": "chemist"}
     SHOP_CLOTHES = {"shop": "clothes"}
+    SHOP_COMPUTER = {"shop": "computer"}
     SHOP_CONFECTIONERY = {"shop": "confectionery"}
     SHOP_CONVENIENCE = {"shop": "convenience"}
     SHOP_COPYSHOP = {"shop": "copyshop"}
@@ -59,6 +60,7 @@ class Categories(Enum):
     SHOP_DOITYOURSELF = {"shop": "doityourself"}
     SHOP_DRY_CLEANING = {"shop": "dry_cleaning"}
     SHOP_ELECTRONICS = {"shop": "electronics"}
+    SHOP_FASHION_ACCESSORIES = {"shop": "fashion_accessories"}
     SHOP_FLORIST = {"shop": "florist"}
     SHOP_FUNERAL_DIRECTORS = {"shop": "funeral_directors"}
     SHOP_FURNITURE = {"shop": "furniture"}
@@ -232,6 +234,7 @@ class Fuel(Enum):
     OCTANE_95 = "fuel:octane_95"
     OCTANE_97 = "fuel:octane_97"
     OCTANE_98 = "fuel:octane_98"
+    OCTANE_99 = "fuel:octane_99"
     OCTANE_100 = "fuel:octane_100"
     # Formulas
     E5 = "fuel:e5"
@@ -267,6 +270,8 @@ class Extras(Enum):
     BABY_CHANGING_TABLE = "changing_table"
     CALLING = "service:phone"
     CAR_WASH = "car_wash"
+    CASH_IN = "cash_in"
+    CASH_OUT = "cash_out"
     COMPRESSED_AIR = "compressed_air"
     COMPUTING = "service:computer"
     COPYING = "service:copy"

@@ -2,12 +2,13 @@ import re
 
 import scrapy
 
+from locations.categories import Categories, apply_category
 from locations.items import Feature
 
 
-class UnitedDairyFarmersSpider(scrapy.Spider):
+class UnitedDairyFarmersUSSpider(scrapy.Spider):
     download_delay = 0.2
-    name = "united_dairy_farmers"
+    name = "united_dairy_farmers_us"
     item_attributes = {"brand": "United Dairy Farmers", "brand_wikidata": "Q7887677"}
     allowed_domains = ["udfinc.com"]
     start_urls = ("https://www.udfinc.com/wp-sitemap-posts-wpsl_stores-1.xml",)
@@ -57,4 +58,5 @@ class UnitedDairyFarmersSpider(scrapy.Spider):
                 "lon": float(data[8].split(":")[1]),
             }
 
+        apply_category(Categories.FUEL_STATION, properties)
         yield Feature(**properties)
