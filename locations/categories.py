@@ -91,6 +91,7 @@ class Categories(Enum):
     SHOP_STATIONERY = {"shop": "stationery"}
     SHOP_STORAGE_RENTAL = {"shop": "storage_rental"}
     SHOP_SUPERMARKET = {"shop": "supermarket"}
+    SHOP_TEA = {"shop": "tea"}
     SHOP_TELECOMMUNICATION = {"shop": "telecommunication"}
     SHOP_TOYS = {"shop": "toys"}
     SHOP_TRADE = {"shop": "trade"}
@@ -123,6 +124,7 @@ class Categories(Enum):
     FUEL_STATION = {"amenity": "fuel"}
     HOSPITAL = {"amenity": "hospital", "healthcare": "hospital"}
     HOTEL = {"tourism": "hotel"}
+    KINDERGARTEN = {"amenity": "kindergarten"}
     LIBRARY = {"amenity": "library"}
     MONEY_TRANSFER = {"amenity": "money_transfer"}
     MUSEUM = {"tourism": "museum"}
