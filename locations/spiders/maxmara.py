@@ -4,6 +4,7 @@ from geonamescache import GeonamesCache
 from locations.dict_parser import DictParser
 from locations.hours import DAYS_EN, OpeningHours
 from locations.user_agents import BROWSER_DEFAULT
+from locations.categories import Categories, apply_category
 
 
 class MaxmaraSpider(scrapy.Spider):
@@ -40,5 +41,7 @@ class MaxmaraSpider(scrapy.Spider):
                         open_at, close_at = chunk.replace(".", ":").split(" - ")
                         oh.add_range(day=DAYS_EN[day], open_time=open_at, close_time=close_at, time_format="%H:%M")
                 item["opening_hours"] = oh
+                
+                apply_category(Categories.SHOP_CLOTHES, item)
 
                 yield item
