@@ -1,6 +1,7 @@
 from scrapy import Spider
 
 from locations.items import Feature
+from locations.categories import Categories, apply_category
 
 
 class UniversalStoreAUSpider(Spider):
@@ -21,7 +22,10 @@ class UniversalStoreAUSpider(Spider):
                 "phone": location_html.xpath('.//span[@class="phoneFormatted"]/text()').get().strip(),
                 "website": "https://www.universalstore.com" + location_html.xpath(".//a/@href").get(),
             }
+            
             if "Perfect Stranger" in properties["name"]:
                 properties["brand"] = "Perfect Stranger"
                 properties["brand_wikidata"] = "Q119444659"
+            
+            apply_category(Categories.SHOP_CLOTHES, properties)
             yield Feature(**properties)
