@@ -6,6 +6,7 @@ from scrapy.spiders import SitemapSpider
 
 from locations.hours import OpeningHours
 from locations.items import Feature
+from locations.categories import Categories, apply_category
 
 
 class BannerHealthSpider(SitemapSpider):
@@ -69,5 +70,6 @@ class BannerHealthSpider(SitemapSpider):
                 "phone": data.get("markerList")[0].get("Locations")[0].get("PhoneNumber"),
                 "opening_hours": oh.as_opening_hours(),
             }
+            apply_category(Categories.CLINIC, properties)
 
             yield Feature(**properties)
