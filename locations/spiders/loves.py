@@ -29,7 +29,7 @@ class LovesSpider(scrapy.Spider):
             }
         )
         yield scrapy.Request(
-            f"https://www.loves.com/api/sitecore/StoreSearch/SearchStoresWithDetail?pageNumber={0}&top=50&lat=39.09574818760951&lng=-96.9935195",
+            f"https://www.loves.com/api/sitecore/StoreSearch/SearchStoresWithDetail?pageNumber={self.page}&top=50&lat=39.09574818760951&lng=-96.9935195",
             method="POST",
             body=payload,
             headers=HEADERS,
